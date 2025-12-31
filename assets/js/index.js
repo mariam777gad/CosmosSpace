@@ -179,7 +179,7 @@ async function getLaunches() {
 getLaunches();
 
 function displayLaunches(showData) {
-  dec.launchTitle.innerHTML = showData[0].name;
+ // dec.launchTitle.innerHTML = showData[0].name;
  // dec.countryName.innerHTML=showData[0].country.name
   //dec.locationName.innerHTML=showData[0].location.name
   var cartona = ""
@@ -192,7 +192,7 @@ function displayLaunches(showData) {
               <div
                 class="relative h-48 bg-slate-900/50 flex items-center justify-center"
               >
-              <img src="${showData[i].image_url}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='/images/launch-placeholder.png';">
+              <img src="${showData[i].image.image_url}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='/images/launch-placeholder.png';">
               
                 <i class="fas fa-space-shuttle text-5xl text-slate-700"></i>
                 <div class="absolute top-3 right-3">
