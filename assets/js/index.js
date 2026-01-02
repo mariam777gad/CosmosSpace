@@ -45,8 +45,12 @@ var dec = {
   countryName: document.getElementById("countryName"),
   locationName: document.getElementById("locationName"),
   descriptionName: document.getElementById("descriptionName"),
+  planetType: document.querySelectorAll("#planetType"),
+  planetNumMoons: document.querySelectorAll("#planetNumMoons"),
+  planetDensityRow: document.querySelectorAll("#planetDensityRow"),
+  planetMassRow: document.querySelectorAll("#planetMassRow"),
+  planetDiameter:document.querySelectorAll("#planetDiameter")
 };
-
 var search;
 for (var i = 0; i < dec.btn.length; i++) {
   dec.btn[i].addEventListener("click", function (e) {
@@ -136,6 +140,11 @@ function selectPlanet() {
       var target = e.currentTarget.getAttribute("data-planet-id");
       displayPlants(target);
     });
+    dec.planetType[i].innerHTML = getData[i].type;
+    dec.planetDensityRow[i].innerHTML = getData[i].density.toFixed(2);
+    dec.planetMassRow[i].innerHTML = (getData[i].mass.massValue/getData[i].mass.massExponent).toFixed(3);
+    dec.planetDiameter[i].innerHTML=getData[i].longAscNode.toFixed(1)
+    //dec.planetNumMoons[i].innerHTML=getData[i].moons.length;
   }
 }
 function displayPlants(target) {
@@ -147,8 +156,8 @@ function displayPlants(target) {
       dec.planetDesc.innerHTML = getData[i].description;
       dec.planetDistance.innerHTML = `${getData[i].semimajorAxis} Km`;
       dec.planetRadius.innerHTML = `${getData[i].meanRadius} Km`;
-      dec.planetMass.innerHTML = `${getData[i].mass.massValue}*10²⁴ Kg`;
-      dec.planetDensity.innerHTML = `${getData[i].density} g/cm³`;
+      dec.planetMass.innerHTML = `${getData[i].mass.massValue.toFixed(2)}*10²⁴ Kg`;
+      dec.planetDensity.innerHTML = `${getData[i].density.toFixed(2)} g/cm³`;
       dec.planetPerihelion.innerHTML = `${getData[i].perihelion} M km`;
       dec.planetAphelion.innerHTML = `${getData[i].aphelion} M km`;
       dec.planetEccentricity.innerHTML = getData[i].eccentricity;
@@ -162,9 +171,9 @@ function displayPlants(target) {
         ? getData[i].discoveryDate
         : `Ancient`;
       dec.planetBodyType.innerHTML = getData[i].bodyType;
-      dec.planetVolume.innerHTML = `${getData[i].vol.volValue} x10^ ${getData[i].vol.volExponent}Km`;
+      dec.planetVolume.innerHTML = `${getData[i].vol.volValue.toFixed(2)} x10^ ${getData[i].vol.volExponent}Km`;
       dec.planetOrbital.innerHTML = getData[i].sideralOrbit;
-      dec.planetRotation.innerHTML = getData[i].sideralRotation;
+      dec.planetRotation.innerHTML = getData[i].sideralRotation.toFixed(2);
       dec.planetMoons.innerHTML = getData[i].moons.length;
     }
   }
